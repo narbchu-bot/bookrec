@@ -5,12 +5,53 @@ color: #ffe989;
     background-color: #3f4488;
 }
 .bg-yellow{
-    background-color: #ffed9e;
+    background-color: #ede3b6;
 }
 .text-green{
-    color: #00494b;
+    color: #3f4488;
+}
+.bg-hero{
+    background: #ffeeaa;}
+    /* ส่วนของ Section หรือ Container หลัก */
+.hero-section {
+  background-color: #FAF8F5; /* สีขาวครีมนวล ตัดกับปกสีเหลืองชัดเจน */
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 8%;
+}
+/* กรอบตัดขอบและสร้างรูปทรงหนังสือ */
+.book-frame {
+  max-width: 380px;
+  width: 100%;
+  aspect-ratio: 1 / 1.45; /* อัตราส่วนหนังสือมาตรฐาน */
+  overflow: hidden;
+  border-radius: 3px 7px 7px 3px; /* มนมุมคล้ายสันหนังสือ */
+  
+  /* เงาแบบหนังสือจริง */
+  box-shadow: 
+    -4px 0 8px rgba(0, 0, 0, 0.08),
+    12px 20px 30px -5px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* ดึงรูปขยายเล็กน้อยเพื่อดันขอบสีเหลืองอ่อนให้ล้นออกไป */
+.book-img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  transform: scale(1.15); /* ขยายรูปให้ขอบเหลืองอ่อนด้านนอกถูกบัง */
+  display: block;
+}
+
+/* เอฟเฟกต์ตอนชี้เมาส์ */
+.book-frame:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    -6px 0 12px rgba(0, 0, 0, 0.12),
+    18px 28px 40px -8px rgba(0, 0, 0, 0.28);
+}
 .thasadith-regular {
   font-family: "Thasadith", sans-serif;
   font-weight: 400;
@@ -41,11 +82,8 @@ h5 {
   font-weight: 400;
   font-style: normal;
 }
-span {
-  font-family: "Sarabun", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
+
+
 strong {
   font-family: "Mitr", sans-serif;
   font-weight: 400;
@@ -57,8 +95,28 @@ strong {
   font-size: 60px;
   font-style: normal;
 }
+/* 1. ล็อกแถว Navbar ไม่ให้ยืดหดตามสระของข้อความ */
+.my-navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important; /* ยืดให้ทุกปุ่มสูงเท่ากันเต็มแถว */
+}
 
-
+/* 2. ล็อกขนาดของ nav-link และจัดแนวฐานข้อความ */
+.my-navbar .nav-link {
+    height: 48px !important;            /* กำหนดความสูงตายตัว */
+    line-height: 48px !important;       /* ให้บรรทัดเท่ากับความสูง จะล็อกแนวตัวอักษรเป๊ะ */
+    padding-top: 0 !important;          /* ตัด padding บนออก */
+    padding-bottom: 0 !important;       /* ตัด padding ล่างออก */
+    display: inline-block !important;   /* ให้ข้อความวางตัวตาม line-height */
+    vertical-align: middle !important;
+}
+#mainMenu .nav-link {
+    white-space: nowrap !important; /* ป้องกันข้อความเผลอขึ้นบรรทัดใหม่ */
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 100% !important;
+}
 /* กล่องข้อคิดแต่ละช่อง */
 .idea-box {
     height: 100%;
@@ -106,6 +164,7 @@ strong {
 /* หัวข้อให้มีพื้นที่เท่ากัน */
 .idea-title {
     min-height: 30px;
+    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,4 +200,12 @@ strong {
     .book-carousel-img {
         height: 400px;
     }
+}
+/* เวลานำเมาส์ไปชี้ที่โลโก้ แมวจะขยับกระดิกและเอียงตัวเล็กน้อย */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: rotate(-10deg) scale(1.15); /* แมวจะเอียงตัว 10 องศาและขยายใหญ่ขึ้นเล็กน้อย */
 }
